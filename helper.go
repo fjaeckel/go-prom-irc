@@ -16,7 +16,7 @@ type Notification struct {
 	GroupKey          string                 `json:"groupKey"`
 	Status            string                 `json:"status"`
 	Receiver          string                 `json:"receiver"`
-	GroupLables       map[string]interface{} `json:"groupLabels"`
+	GroupLabels       map[string]interface{} `json:"groupLabels"`
 	CommonLabels      map[string]interface{} `json:"commonLabels"`
 	CommonAnnotations map[string]interface{} `json:"commonAnnotations"`
 	ExternalURL       string                 `json:"externalURL"`

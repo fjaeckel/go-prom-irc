@@ -28,7 +28,8 @@ var (
 
 func CreateFunctionNotifyFunction(bot *irc.Connection) http.HandlerFunc {
 
-	const firingTemplateString = "[{{ .ColorStart }}{{ .Status }}{{ .ColorEnd }}:{{ .InstanceCount }}] {{ .Alert.Labels.alertname}} - {{ .Alert.Annotations.description}}"
+//	const firingTemplateString = "[{{ .ColorStart }}{{ .Status }}{{ .ColorEnd }}:{{ .InstanceCount }}] {{ .Alert.Labels.alertname}} - {{ .Alert.Annotations.description}}"
+	const firingTemplateString = "[{{ .ColorStart }}{{ .Status }}{{ .ColorEnd }}:{{ .InstanceCount }}] {{ .Alert.Labels.alertname}} - {{ range $key, $value := .Notification.GroupLabels }}{{ if $key }}{{$key}} {{$value}} - {{ end }}{{end}}"
 	const resolvedTemplateString = "[{{ .ColorStart }}{{ .Status }}{{ .ColorEnd }}:{{ .InstanceCount }}] {{ .Alert.Labels.alertname}}"
 	const hostListTemplateString = "→ {{range $i, $instance := . }}{{if $i}}, {{end}}{{$instance.Name}}{{if $instance.Value}} ({{$instance.Value}}){{end}}{{end}}"
 
